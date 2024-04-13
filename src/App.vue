@@ -1,41 +1,49 @@
+/* eslint-disable */
 <template>
-
-<div>
-
-  <h1>Hello World</h1>
-  <h2>{{ cheese }}</h2>
-  <GoodbyeWorld v-bind:cheese="cheese"/>
-  <button v-on:click="handleClick"> Click Me </button>
-
-</div>
-
+  <div id="app">
+    <div>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/another">Another</router-link>
+    </div>
+    <HeaderVue />
+    <router-view/>
+    <FooterVue />
+  </div>
 </template>
 
 <script>
-import GoodbyeWorld from "./components/HelloWorld.vue"
+import HeaderVue from "./components/Header.vue"
+import FooterVue from "./components/Footer.vue"
 
 export default {
   name: "App",
-  data: function(){
-    return {
-      cheese: "gouda"
-    }
-  },
   components: {
-    GoodbyeWorld
-  },
-  methods: {
-    handleClick: function(){
-      this.cheese = 'munster'
-    }
+    HeaderVue,
+    FooterVue
   }
 }
 </script>
 
 <style>
-
-h1 {
-  color: purple;
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
